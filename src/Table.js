@@ -12,6 +12,7 @@ import data from './data';
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
+    maxWidth: 1000
   },
 });
 
@@ -19,8 +20,24 @@ const useStyles = makeStyles({
 export default function DenseTable() {
   const classes = useStyles();
 
+
+  let rows=[];
+  data.map((v,k)=>{
+    v['id']=k;
+    v['parent']=0;
+    rows.push(v);
+    if(v.category.length>0){
+      v.category.map((vv,kk)=>{
+        vv['id']=k+"-"+kk;
+        vv['parent']=1;
+        rows.push(vv);
+      });
+    }
+  });
+
+
+
   return (
-    <TableContainer component={Paper}>
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
@@ -32,11 +49,11 @@ export default function DenseTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data &&
-            data.map((v,k)=>{
+          {rows &&
+            rows.map((v)=>{
               return(
-                <TableRow key={k}>
-                  <TableCell component="th" scope="row" style={v.parent==null ? {fontWeight: 'bold'} : {paddingLeft: 30}}>
+                <TableRow key={v.id}>
+                  <TableCell component="th" scope="row" style={v.parent==0?{fontWeight: 'bold'}:{paddingLeft:30}}>
                     {v.name&&v.name!==''?v.name:''}
                   </TableCell>
                   <TableCell align="right">{v.sampleSize&&v.sampleSize!==''?v.sampleSize.toLocaleString():''} {v.SMN&&v.SMN!==''?' ('+v.SMN.toLocaleString()+')':''}</TableCell>
@@ -49,6 +66,5 @@ export default function DenseTable() {
           }
         </TableBody>
       </Table>
-    </TableContainer>
   );
 }
