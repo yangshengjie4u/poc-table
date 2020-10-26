@@ -8,7 +8,7 @@ export default function DenseTable() {
     data.variables.map((v,k)=>{
         let row={};
         row['name']=v.name;
-        row['size']=v.size.total+"("+v.size.true+")";
+        row['size']=v.size.total+" ("+v.size.true+")";
         if (v.keys.length==1 && v.keys[0].name==""){
             row['type']='font-weight-bold';
             row['true']=v.keys[0].data.true;

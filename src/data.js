@@ -8,10 +8,10 @@ export default {
         {
             "name": "Mean age at diagnosis (mo)",
             "size": {
-                "total": 5987,
-                "true": 43
+                "total": 5327,
+                "true": 47
             },
-            "pval": 0.27,
+            "pval": 0.23,
             "keys": [
                 {
                     "name": "",
@@ -25,8 +25,8 @@ export default {
         {
             "name": "Age at diagnosis",
             "size": {
-                "total": 5987,
-                "true": 43
+                "total": 5787,
+                "true": 42
             },
             "pval": 0.27,
             "keys": [
@@ -34,7 +34,7 @@ export default {
                     "name": "< 18 mo",
                     "data": {
                         "true": 41.9,
-                        "false": 50.0
+                        "false": 51.3
                     }
                 },
                 {
@@ -49,8 +49,8 @@ export default {
         {
             "name": "Sex",
             "size": {
-                "total": 5987,
-                "true": 43
+                "total": 6001,
+                "true": 51
             },
             "pval": 0.07,
             "keys": [
